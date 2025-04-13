@@ -1,0 +1,3 @@
+“Enter a number: “/var/lib/slurmd/job49359427/slurm_script: line 21: [: -gt: unary operator expected
+/var/lib/slurmd/job49359427/slurm_script: line 25: [: -lt: unary operator expected
+“ is zero.”
