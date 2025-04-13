@@ -1,0 +1,61 @@
+#!/bin/bash
+#SBATCH --job-name=revGOL_mpi
+#SBATCH --output=mpi_results_%j.out
+#SBATCH --error=mpi_results_%j.err
+#SBATCH --nodes=1                 # Single node
+#SBATCH --ntasks=50               # 50 MPI tasks
+#SBATCH --cpus-per-task=1         # 1 CPU per task
+#SBATCH --mem=100G                # 100GB total memory
+#SBATCH --time=00:20:00           # 20 minute runtime
+#SBATCH --partition=standard
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=your_email@msu.edu
+
+# Load required modules
+module purge
+module load gcc openmpi
+
+# Print job information
+echo "Job ID: ${SLURM_JOB_ID}"
+echo "Running on ${SLURM_NTASKS} MPI tasks"
+echo "Starting at $(date)"
+echo "Working directory: $(pwd)"
+echo ""
+
+# Run the MPI program
+echo "Starting MPI execution..."
+mpirun -np ${SLURM_NTASKS} ./reverseGOL_mpi cmse2.txt
+echo "MPI execution completed at $(date)"
+echo ""
+
+# Process results
+OUTPUT_FILE="mpi_results_${SLURM_JOB_ID}.out"
+BEST_FILE="mpi_basic_best.txt"
+
+# Create results summary
+echo "MPI Reverse Game of Life Optimization" > ${BEST_FILE}
+echo "Job ID: ${SLURM_JOB_ID}" >> ${BEST_FILE}
+echo "Run completed: $(date)" >> ${BEST_FILE}
+echo "Nodes: ${SLURM_JOB_NUM_NODES}, Tasks: ${SLURM_NTASKS}" >> ${BEST_FILE}
+echo "Runtime: ${SLURM_JOB_CPUS_PER_NODE}" >> ${BEST_FILE}
+echo "=====================================" >> ${BEST_FILE}
+
+# Extract best fitness
+BEST_FITNESS=$(grep "Overall best fitness" ${OUTPUT_FILE} | awk '{print $5}')
+echo "Best Fitness: ${BEST_FITNESS}" >> ${BEST_FILE}
+echo "" >> ${BEST_FILE}
+
+# Extract best plate
+echo "Best Solution Plate:" >> ${BEST_FILE}
+grep -A$((n+1)) "Final Best Plate" ${OUTPUT_FILE} >> ${BEST_FILE}
+
+# Add performance summary
+echo "" >> ${BEST_FILE}
+echo "=== Performance Summary ===" >> ${BEST_FILE}
+grep "Worker.*Generation" ${OUTPUT_FILE} | tail -n10 >> ${BEST_FILE}
+
+# Completion message
+echo ""
+echo "Job completed successfully at $(date)"
+echo "Best results saved to: ${BEST_FILE}"
+echo "Best fitness found: ${BEST_FITNESS}"

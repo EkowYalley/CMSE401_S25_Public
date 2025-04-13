@@ -1,0 +1,10 @@
+Lmod has detected the following error: The following module(s) could not be
+loaded: "openmpi/4.0.5"
+
+Please check the spelling or version number. Also try "module spider ..."
+
+It is also possible that the module is not available for this node type.
+See https://docs.icer.msu.edu/available_software/overview/ for details. 
+
+
+/var/lib/slurmd/job53577464/slurm_script: line 18: mpirun: command not found
