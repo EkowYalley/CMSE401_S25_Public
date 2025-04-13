@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=revGOL_parallel
+#SBATCH --output=revGOL_%A_%a.out
+#SBATCH --error=revGOL_%A_%a.err
+#SBATCH --array=1-50
+#SBATCH --time=00:10:00
+#SBATCH --mem=2gb
+#SBATCH --cpus-per-task=1
+
+# Set unique seed from array ID
+SEED=$SLURM_ARRAY_TASK_ID
+
+# Run program
+./revGOL cmse2.txt $SEED
+
+# Rename output files to include seed
+mv serial.txt serial_${SEED}.txt

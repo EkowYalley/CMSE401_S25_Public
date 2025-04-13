@@ -1,0 +1,6 @@
+Optimization Results Summary
+===========================
+Total jobs processed: 100
+Best seed: 0
+Best fitness: 999999
+Best solution file: pp_best.txt
