@@ -1,1 +1,2 @@
-k
+Seed:3 
+fitness:284

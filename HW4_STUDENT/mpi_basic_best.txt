@@ -1,11 +1,7 @@
 MPI Reverse Game of Life Optimization
-Job ID: 53578709
-Run completed: Sun Apr 13 02:34:23 PM EDT 2025
+Job ID: 53593368
+Run completed: Sun Apr 13 08:33:52 PM EDT 2025
 Nodes: 1, Tasks: 50
 Runtime: 50
 =====================================
-Best Fitness: 
-
-Best Solution Plate:
-
-=== Performance Summary ===
+Best Fitness: 198

@@ -1,0 +1,14 @@
+Reverse Game of Life MPI Results
+===============================
+Job ID: 
+Date: Sun Apr 13 09:15:55 PM EDT 2025
+Parameters:
+- Generations: 
+- Population size: 
+- Grid size: x
+- MPI Processes: 
+
+Results:
+- Best fitness: 
+
+Best solution pattern:

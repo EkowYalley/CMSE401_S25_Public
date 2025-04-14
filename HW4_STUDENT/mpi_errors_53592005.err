@@ -1,0 +1,57 @@
+reverseGOL-mpi.c: In function ‘main’:
+reverseGOL-mpi.c:22:22: error: ‘ngen’ undeclared (first use in this function)
+   22 |     for(int g=0; g < ngen; g++) {
+      |                      ^~~~
+reverseGOL-mpi.c:22:22: note: each undeclared identifier is reported only once for each function it appears in
+reverseGOL-mpi.c:24:24: error: ‘npop’ undeclared (first use in this function)
+   24 |         for(int i=0; i<npop; i++) {
+      |                        ^~~~
+reverseGOL-mpi.c:26:24: error: ‘population’ undeclared (first use in this function)
+   26 |             plate[0] = population[i];
+      |                        ^~~~~~~~~~
+reverseGOL-mpi.c:27:24: error: ‘buffer_plate’ undeclared (first use in this function)
+   27 |             plate[1] = buffer_plate;
+      |                        ^~~~~~~~~~~~
+reverseGOL-mpi.c:28:13: warning: implicit declaration of function ‘iteration’ [-Wimplicit-function-declaration]
+   28 |             iteration(plate, 0, n);
+      |             ^~~~~~~~~
+reverseGOL-mpi.c:28:33: error: ‘n’ undeclared (first use in this function)
+   28 |             iteration(plate, 0, n);
+      |                                 ^
+reverseGOL-mpi.c:29:13: error: ‘pop_fitness’ undeclared (first use in this function)
+   29 |             pop_fitness[i] = fitness(buffer_plate, target_plate, n);
+      |             ^~~~~~~~~~~
+reverseGOL-mpi.c:29:30: warning: implicit declaration of function ‘fitness’ [-Wimplicit-function-declaration]
+   29 |             pop_fitness[i] = fitness(buffer_plate, target_plate, n);
+      |                              ^~~~~~~
+reverseGOL-mpi.c:29:52: error: ‘target_plate’ undeclared (first use in this function)
+   29 |             pop_fitness[i] = fitness(buffer_plate, target_plate, n);
+      |                                                    ^~~~~~~~~~~~
+reverseGOL-mpi.c:31:46: error: ‘best’ undeclared (first use in this function)
+   31 |             if (pop_fitness[i] < pop_fitness[best]) {
+      |                                              ^~~~
+reverseGOL-mpi.c:32:17: error: ‘sbest’ undeclared (first use in this function)
+   32 |                 sbest = best;
+      |                 ^~~~~
+reverseGOL-mpi.c:39:42: error: ‘M’ undeclared (first use in this function)
+   39 |                     printf("%d %d\n", n, M);
+      |                                          ^
+reverseGOL-mpi.c:40:21: warning: implicit declaration of function ‘print_plate’ [-Wimplicit-function-declaration]
+   40 |                     print_plate(target_plate, n);
+      |                     ^~~~~~~~~~~
+reverseGOL-mpi.c:129:17: warning: implicit declaration of function ‘cross’ [-Wimplicit-function-declaration]
+  129 |                 cross(population[i], population[best], n);
+      |                 ^~~~~
+reverseGOL-mpi.c:132:21: warning: implicit declaration of function ‘mutate’ [-Wimplicit-function-declaration]
+  132 |                     mutate(population[i], population[best], n, rate);
+      |                     ^~~~~~
+reverseGOL-mpi.c:136:21: warning: implicit declaration of function ‘makerandom’; did you mean ‘srandom’? [-Wimplicit-function-declaration]
+  136 |                     makerandom(population[i], n);
+      |                     ^~~~~~~~~~
+      |                     srandom
+reverseGOL-mpi.c:58:35: warning: unused variable ‘recv_request’ [-Wunused-variable]
+   58 |         MPI_Request send_request, recv_request;
+      |                                   ^~~~~~~~~~~~
+reverseGOL-mpi.c:58:21: warning: unused variable ‘send_request’ [-Wunused-variable]
+   58 |         MPI_Request send_request, recv_request;
+      |                     ^~~~~~~~~~~~
